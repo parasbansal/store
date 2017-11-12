@@ -1,0 +1,10 @@
+.page-header{
+	background: #222;
+	color: #eee;
+	text-align: center;
+	font-size: 20px;
+	padding: 20px;
+}
+.editBlock{
+	position: fixed;
+}

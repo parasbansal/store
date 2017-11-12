@@ -1,0 +1,82 @@
+<div class="page-header">
+  Corner Store
+</div>
+
+<div class="row">
+
+  <!-- Show all products -->
+  <div class="col m8">
+
+    <form (submit)="newProduct()">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" name="newName" [(ngModel)]="newName" placeholder="Name" required>
+            </td>
+            <td>
+              <input type="number" name="newPrice" [(ngModel)]="newPrice" placeholder="Price" required>
+            </td>
+            <td>
+              <input type="number" name="newQuantity" [(ngModel)]="newQuantity" placeholder="Quantity" required>
+            </td>
+            <td>
+              <button type="submit" class="btn">
+                <i class="material-icons">add</i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngFor="let product of products; let i = index">
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td class="center-align">
+              <a (click)="edit(product)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="delete(product)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+
+
+  <!-- For edit form -->
+  <div class="col m4">
+    <div *ngIf="editProduct" class="editBlock">
+      <div class="card">
+        <div class="card-content">
+
+          <div class="card-title">Edit Form</div>
+
+          <form (submit)="editSubmit()">
+            <label>Name:</label>
+            <input type="text" name="editProduct.name" [(ngModel)]="editProduct.name">
+            <label>Price:</label>
+            <input type="number" name="editProduct.price" [(ngModel)]="editProduct.price">
+            <label>Quantity:</label>
+            <input type="number" name="editProduct.quantity" [(ngModel)]="editProduct.quantity">
+            <button type="submit" class="btn">Save</button>
+            <button (click)="closeEditForm()" class="btn-flat">Close</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
